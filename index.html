@@ -59,12 +59,22 @@
             display: block;
         }
 
+        /* Опис над таймером */
+        .countdown-description {
+            display: block;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+        }
+
         /* Стилі таймера */
         #countdown {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin: 30px 0;
+            margin: 15px 0 30px;
         }
         .countdown-item {
             background: white;
@@ -169,7 +179,8 @@
         <h2>Ми одружуємось!</h2>
         <h1>Ростислав & Руслана</h1>
         
-        <!-- Блок таймера -->
+        <!-- Опис та таймер -->
+        <span class="countdown-description">До нашої особливої події залишилось:</span>
         <div id="countdown">
             <div class="countdown-item">
                 <span class="countdown-number" id="days">00</span>
@@ -230,7 +241,8 @@
         <div class="rsvp">
             <h2>Ви будете з нами?</h2>
             <p>Будь ласка, підтвердіть вашу присутність</p>
-            <a href="https://t.me/glhf_ss" class="btn">Підтвердити присутність</a>
+            <!-- Додано target="_blank" для відкриття у новій вкладці -->
+            <a href="https://t.me/glhf_ss" class="btn" target="_blank" rel="noopener noreferrer">Підтвердити присутність</a>
         </div>
 
         <footer>
@@ -241,13 +253,13 @@
     <!-- JavaScript для таймера -->
     <script>
         function updateCountdown() {
-            // Встановлюємо дату весілля (рік, місяць (0-11), день, години, хвилини)
             const weddingDate = new Date("July 3, 2026 14:00:00").getTime();
             const now = new Date().getTime();
             const distance = weddingDate - now;
 
             if (distance < 0) {
                 document.getElementById("countdown").innerHTML = "<h3>Цей щасливий день настав!</h3>";
+                document.querySelector(".countdown-description").style.display = "none";
                 return;
             }
 
@@ -262,9 +274,8 @@
             document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
         }
 
-        // Оновлюємо таймер кожну секунду
         setInterval(updateCountdown, 1000);
-        updateCountdown(); // Викликаємо одразу при завантаженні
+        updateCountdown();
     </script>
 
 </body>
