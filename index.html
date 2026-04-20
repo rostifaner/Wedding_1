@@ -2,10 +2,10 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Весілля Ростислава та Руслани</title>
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><g stroke=%22%23c5a059%22 stroke-width=%228%22 fill=%22none%22><circle cx=%2240%22 cy=%2250%22 r=%2225%22/><circle cx=%2260%22 cy=%2250%22 r=%2225%22/></g></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><g stroke=%22%23c5a059%22 stroke-width=%2210%22 fill=%22none%22><circle cx=%2238%22 cy=%2250%22 r=%20%2222%22/><circle cx=%2262%22 cy=%2250%22 r=%2222%22/></g></svg>">
     
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
@@ -14,154 +14,185 @@
             --gold: #c5a059;
             --dark: #333;
             --bg: #fdfbf7;
+            --white: #ffffff;
         }
 
+        /* Базові налаштування */
+        * { box-sizing: border-box; }
+        
         body { 
             font-family: 'Montserrat', sans-serif; 
-            margin: 0; padding: 0; text-align: center; 
-            color: var(--dark); background-color: var(--bg);
-            line-height: 1.6; overflow-x: hidden;
+            margin: 0; padding: 0; 
+            text-align: center; 
+            color: var(--dark); 
+            background-color: var(--bg);
+            line-height: 1.5;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container { padding: 20px; max-width: 800px; margin: auto; position: relative; z-index: 1; }
+        .container { 
+            padding: 15px; 
+            max-width: 800px; 
+            margin: auto; 
+        }
 
+        /* Шапка сайту */
         header {
-            padding: 80px 20px 40px;
-            background: #fff;
+            padding: 60px 15px 30px;
+            background: var(--white);
             border-bottom: 1px solid #eee;
         }
 
-        /* ЦЕЙ ШРИФТ ТОЧНО МАЄ ЗМІНИТИСЯ */
-        h1 { 
-            font-family: 'Lobster', cursive !important; 
-            font-size: 4.5rem; 
-            color: var(--gold); 
-            margin: 20px 0;
-            font-weight: 400;
-            letter-spacing: 1px;
+        .date-top {
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+            color: #888;
         }
 
         h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin: 0 0 10px;
             font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        .date-top {
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            display: block;
-            color: #888;
+        /* ШРИФТ ДЛЯ ІМЕН */
+        h1 { 
+            font-family: 'Lobster', cursive !important; 
+            font-size: clamp(3rem, 12vw, 4.5rem); /* Адаптивний розмір шрифту */
+            color: var(--gold); 
+            margin: 10px 0;
+            font-weight: 400;
+            line-height: 1.2;
         }
 
+        /* Таймер */
         .countdown-description {
             display: block;
-            margin-top: 40px;
-            font-size: 0.85rem;
+            margin-top: 30px;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: #999;
         }
 
         #countdown {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 15px 0 30px;
+            gap: 10px;
+            margin: 15px 0 20px;
         }
+
         .countdown-item {
-            background: white;
-            padding: 15px;
-            min-width: 70px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            background: var(--white);
+            padding: 12px 8px;
+            flex: 1;
+            max-width: 80px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
+
         .countdown-number {
             display: block;
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
             font-weight: 600;
             color: var(--gold);
         }
+
         .countdown-label {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            color: #888;
+            color: #999;
+            display: block;
+            margin-top: 4px;
         }
 
+        /* Текстові блоки */
         .intro-text {
             font-style: italic;
-            font-size: 1.1rem;
-            max-width: 500px;
-            margin: 40px auto;
+            font-size: 1rem;
+            max-width: 90%;
+            margin: 30px auto;
             color: #666;
         }
 
         .divider {
-            margin: 40px auto;
-            font-size: 24px;
+            margin: 30px auto;
+            font-size: 20px;
             color: var(--gold);
         }
 
+        /* Спеціальна адаптивна сітка для карток */
         .info-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 40px 0;
+            grid-template-columns: 1fr 1fr; /* 2 колонки на десктопі */
+            gap: 15px;
+            margin: 30px 0;
         }
 
         @media (max-width: 600px) {
-            .info-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 3.2rem; }
+            .info-grid {
+                grid-template-columns: 1fr; /* 1 колонка на мобільних */
+            }
+            header { padding-top: 40px; }
         }
 
         .card {
-            background: white;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            background: var(--white);
+            padding: 25px 15px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(197, 160, 89, 0.1);
         }
 
         .card h3 {
             color: var(--gold);
-            font-size: 1.5rem;
-            margin-top: 0;
+            font-size: 1.3rem;
+            margin: 0 0 10px;
         }
+
+        .card p { margin: 5px 0; font-size: 0.95rem; }
 
         .gift-section {
             background: #f9f4ee;
-            padding: 40px 20px;
-            border-radius: 5px;
-            margin: 40px 0;
+            padding: 30px 20px;
+            border-radius: 12px;
+            margin: 30px 0;
         }
 
+        /* Кнопка */
         .btn {
-            display: inline-block;
-            padding: 18px 40px;
+            display: block; /* На мобілках краще на всю ширину */
+            width: 100%;
+            max-width: 300px;
+            padding: 18px;
             background: var(--gold);
-            color: white;
+            color: var(--white);
             text-decoration: none;
-            margin-top: 20px;
-            transition: 0.3s;
+            margin: 20px auto;
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.9rem;
             font-weight: 600;
-            border: none;
-            cursor: pointer;
+            border-radius: 50px; /* Кругла кнопка краще для тачу */
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
         }
 
-        .btn:hover { background: #ab8a4a; transform: translateY(-2px); }
+        .btn:active { transform: scale(0.98); }
 
         footer {
-            padding: 60px 20px;
-            font-size: 1.2rem;
+            padding: 40px 15px 60px;
+            font-size: 1.1rem;
             color: var(--gold);
             font-family: 'Lobster', cursive;
         }
+
     </style>
 </head>
 <body>
@@ -171,7 +202,7 @@
         <h2>Ми одружуємось!</h2>
         <h1>Ростислав & Руслана</h1>
         
-        <span class="countdown-description">До нашої особливої події залишилось:</span>
+        <span class="countdown-description">До нашої події залишилось:</span>
         <div id="countdown">
             <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">Днів</span></div>
             <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Год</span></div>
@@ -185,43 +216,51 @@
             З любов’ю в серцях і мріями про спільне майбутнє ми вирішили поєднати свої долі...
         </p>
 
-        <div class="divider">⸻</div>
+        <div class="divider">⸻ 💍 ⸻</div>
 
         <div class="info-grid">
             <div class="card">
                 <h3>💍 Вінчання</h3>
-                <p><strong>03.07.2026</strong><br>14:00 — Церква</p>
-                <small>📍 Назва та адреса церкви</small>
+                <p><strong>03.07.2026 о 14:00</strong></p>
+                <p>Локація: Церква</p>
+                <p><small style="color:#999">📍 Адреса церкви</small></p>
             </div>
             <div class="card">
                 <h3>🥂 Святкування</h3>
-                <p><strong>03.07.2026</strong><br>16:00 — ресторан «Європа»</p>
+                <p><strong>03.07.2026 о 16:00</strong></p>
+                <p>Ресторан «Європа»</p>
             </div>
         </div>
 
         <div class="gift-section">
             <p>У цей день народжується наша сім’я 💛</p>
-            <p style="font-size: 0.9rem; color: #777;">Якщо бажаєте привітати нас подарунком — ми будемо вдячні за внесок у наш спільний початок.</p>
+            <p style="font-size: 0.85rem; color: #777;">Ваша присутність — головний подарунок. Але якщо захочете підтримати наш старт — ми будемо вдячні за внесок у конверті.</p>
         </div>
 
         <div class="rsvp">
-            <h2>Ви будете з нами?</h2>
-            <p>Заповніть анкету до 15 травня</p>
-            <a href="https://forms.gle/QmTTAsrV5D8heo7P6" class="btn" target="_blank" onclick="fireConfetti()">Підтвердити присутність</a>
+            <h2 style="font-size: 1.1rem;">Ви будете з нами?</h2>
+            <p style="font-size: 0.9rem;">Будь ласка, заповніть анкету до 15 травня</p>
+            <a href="https://forms.gle/QmTTAsrV5D8heo7P6" class="btn" target="_blank" onclick="fireConfetti()">Підтвердити</a>
         </div>
 
         <footer>
-            З любов’ю та нетерпінням чекаємо на зустріч! 💕
+            З любов’ю чекаємо на вас! 💕
         </footer>
     </div>
 
+    <!-- Конфетті -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
         function updateCountdown() {
             const weddingDate = new Date("July 3, 2026 14:00:00").getTime();
             const now = new Date().getTime();
             const distance = weddingDate - now;
-            if (distance < 0) { document.getElementById("countdown").innerHTML = "<h3>День настав!</h3>"; return; }
+            
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "<h3>Цей день настав!</h3>";
+                return;
+            }
+
             document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
             document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -230,8 +269,13 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        window.onload = () => confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#c5a059', '#fff'] });
-        function fireConfetti() { confetti({ particleCount: 150, spread: 70, origin: { y: 0.8 } }); }
+        window.onload = () => {
+            confetti({ particleCount: 100, spread: 60, origin: { y: 0.7 }, colors: ['#c5a059', '#ffffff'] });
+        };
+
+        function fireConfetti() {
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.8 } });
+        }
     </script>
 </body>
 </html>
