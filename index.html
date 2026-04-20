@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Весілля Ростислава та Руслани</title>
+    <title>Rostyslav & Ruslana Wedding</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><g stroke=%22%23c5a059%22 stroke-width=%2210%22 fill=%22none%22><circle cx=%2238%22 cy=%2250%22 r=%2222%22/><circle cx=%2262%22 cy=%2250%22 r=%2222%22/></g></svg>">
     
@@ -231,7 +231,7 @@
 
         <div class="rsvp">
             <p>Будь ласка, заповніть анкету до 15 травня</p>
-            <a href="https://forms.gle/QmTTAsrV5D8heo7P6" class="btn" target="_blank" onclick="fireConfetti()">Підтвердити присутність</a>
+            <a href="https://forms.gle/CfNeLLooYud2pCGP6" class="btn" target="_blank" onclick="fireConfetti()">Підтвердити присутність</a>
         </div>
 
         <footer>
@@ -242,10 +242,10 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
         function updateCountdown() {
-            const weddingDate = new Date("July 3, 2026 14:00:00").getTime();
+            const weddingDate = new Date("July 3, 2026").getTime();
             const now = new Date().getTime();
             const distance = weddingDate - now;
-            if (distance < 0) { document.getElementById("countdown").innerHTML = "<h3>Цей день настав!</h3>"; return; }
+            if (distance < 0) { document.getElementById("countdown").innerHTML = "<h3>ЦЕЙ ДЕНЬ НАСТАВ! 🥂</h3>"; return; }
             document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
             document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -253,8 +253,37 @@
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
-        window.onload = () => confetti({ particleCount: 100, spread: 60, origin: { y: 0.7 }, colors: ['#c5a059', '#ffffff'] });
-        function fireConfetti() { confetti({ particleCount: 150, spread: 70, origin: { y: 0.8 } }); }
+        // ФУНКЦІЯ ФЕЄРВЕРКУ (на весь екран)
+        function startFireworkShow() {
+            var duration = 5 * 1000; // тривалість 5 секунд
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                
+                // запускаємо з випадкових точок
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: randomInRange(0.1, 0.9), y: Math.random() - 0.2 } 
+                }));
+            }, 250);
+        }
+
+        // Запуск при завантаженні сторінки
+        window.onload = function() {
+            startFireworkShow();
+        };
     </script>
 </body>
 </html>
